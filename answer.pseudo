@@ -1,0 +1,30 @@
+/* 
+* Generates random integer in range [min,max]
+* Math.random() returns floating point number in range [0,1)
+* Thus, [0,1) * (length+1) + min = [0,1) * (max-min+1) + min = [min, max+1) = [min,max]
+*
+* @param {Number} min 
+* @param {Number} max
+* @return {Number} randomNumber
+*/
+function genrateRandomNumber(min,max){
+	return Math.floor(Math.random() * (max-min+1) + min);
+}
+
+/* 
+* Calls generateNumber to return desired result i.e. 'name randomNumber' 
+* @param {String} name
+* @return {String} result
+*/
+function generateResult(name){
+	if(name){
+		return name + ' ' + genrateRandomNumber(6,15); 
+	} else{
+		throw new Error('No name passed to function');
+		return;
+	}
+}
+
+var name = process.argv[2] || null;
+
+console.log(generateResult(name));
